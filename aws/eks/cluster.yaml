@@ -1,0 +1,31 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: loki-experiment
+  region: ap-northeast-1
+  version: "1.33" # kubernetes のバージョン
+
+iam:
+  # Pod に直接 IAM ロールを割り当てることができるようになる
+  withOIDC: true
+
+addons:
+  # PersistentVolumeClaim (PVC) を作成すると自動的に EBS ボリュームが作成されるようになる
+  - name: aws-ebs-csi-driver
+
+nodeGroups:
+  - name: main
+    instanceType: "m5.xlarge"
+    desiredCapacity: 3
+    minSize: 3
+    maxSize: 5
+    amiFamily: AmazonLinux2023
+    iam:
+      # 特定の AWS サービスへのアクセス許可ポリシーをノードの IAM ロールに自動でアタッチ
+      withAddonPolicies:
+        ebs: true
+    volumeSize: 80 # [GiB]
+    volumeType: gp3
+    # EC2インスタンス と EBS　ボリューム間のデータ通信専用にネットワーク帯域を確保する
+    ebsOptimized: true
