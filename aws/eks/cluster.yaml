@@ -16,7 +16,7 @@ addons:
 
 nodeGroups:
   - name: main
-    instanceType: "m5.xlarge"
+    instanceType: "m5.large"
     desiredCapacity: 3
     minSize: 3
     maxSize: 5

@@ -11,7 +11,7 @@ loki:
   storage_config:
     aws:
       region: ap-northeast-1
-      bucketnames: loki-ms-demo-chunks
+      bucketnames: private-loki-chunks
       s3forcepathstyle: false
   ingester:
     chunk_encoding: snappy
@@ -30,7 +30,7 @@ loki:
       type: s3
       s3:
         region: ap-northeast-1
-        bucketnames: loki-ms-demo-ruler
+        bucketnames: private-loki-ruler
         s3forcepathstyle: false
       # alertmanager_url: <URL> # The URL of the Alertmanager to send alerts (Prometheus, Mimir, etc.)
 
@@ -40,8 +40,8 @@ loki:
   storage:
     type: s3
     bucketNames:
-      chunks: "loki-ms-demo-chunks"
-      ruler: "loki-ms-demo-ruler"
+      chunks: "private-loki-chunks"
+      ruler: "private-loki-ruler"
       # admin: "<s3 bucket name>" # GEL customers only
     s3:
       region: ap-northeast-1

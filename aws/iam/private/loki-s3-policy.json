@@ -11,10 +11,10 @@
                 "s3:DeleteObject"
             ],
             "Resource": [
-                "arn:aws:s3:::loki-ms-demo-chunks",
-                "arn:aws:s3:::loki-ms-demo-chunks/*",
-                "arn:aws:s3:::loki-ms-demo-ruler",
-                "arn:aws:s3:::loki-ms-demo-ruler/*"
+                "arn:aws:s3:::private-loki-chunks",
+                "arn:aws:s3:::private-loki-chunks/*",
+                "arn:aws:s3:::private-loki-ruler",
+                "arn:aws:s3:::private-loki-ruler/*"
             ]
         }
     ]
