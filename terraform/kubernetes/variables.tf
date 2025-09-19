@@ -22,6 +22,11 @@ variable "monitoring_namespace" {
   default = "monitoring"
 }
 
+variable "amazon_cloudwatch_namespace" {
+  type    = string
+  default = "amazon-cloudwatch"
+}
+
 variable "loki_chunks_bucket_name" {
   type    = string
   default = "3shake-loki-chunks"

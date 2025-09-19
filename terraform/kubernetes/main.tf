@@ -10,6 +10,12 @@ resource "kubernetes_namespace" "monitoring" {
   }
 }
 
+resource "kubernetes_namespace" "amazon_cloudwatch" {
+  metadata {
+    name = var.amazon_cloudwatch_namespace
+  }
+}
+
 resource "kubernetes_storage_class_v1" "gp3" {
   metadata {
     name = "gp3"

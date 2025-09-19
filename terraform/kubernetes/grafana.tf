@@ -1,5 +1,5 @@
 resource "kubectl_manifest" "grafana" {
-  for_each  = data.kubectl_path_documents.grafana_docs.manifests
+  for_each  = data.kubectl_path_documents.grafana_documents.manifests
   yaml_body = each.value
 
   override_namespace = var.monitoring_namespace
