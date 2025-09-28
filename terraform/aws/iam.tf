@@ -52,7 +52,7 @@ resource "aws_iam_role_policy_attachment" "loki_s3_access_attach" {
 
 resource "aws_eks_pod_identity_association" "loki" {
   cluster_name    = var.cluster_name
-  namespace       = "monitoring"
+  namespace       = "grafana"
   service_account = "loki"
   role_arn        = aws_iam_role.loki_pod_identity_role.arn
 
