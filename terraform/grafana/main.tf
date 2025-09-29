@@ -1,18 +1,6 @@
-resource "kubernetes_namespace" "app" {
+resource "kubernetes_namespace" "grafana" {
   metadata {
-    name = var.app_namespace
-  }
-}
-
-resource "kubernetes_namespace" "monitoring" {
-  metadata {
-    name = var.monitoring_namespace
-  }
-}
-
-resource "kubernetes_namespace" "amazon_cloudwatch" {
-  metadata {
-    name = var.amazon_cloudwatch_namespace
+    name = var.grafana_namespace
   }
 }
 

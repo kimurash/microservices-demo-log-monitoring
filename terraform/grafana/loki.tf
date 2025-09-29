@@ -1,20 +1,20 @@
 resource "kubernetes_secret" "loki_basic_auth" {
   metadata {
     name      = "loki-basic-auth"
-    namespace = var.monitoring_namespace
+    namespace = var.grafana_namespace
   }
   data = {
     ".htpasswd" = file("${path.module}/.htpasswd")
   }
   type = "Opaque"
 
-  depends_on = [kubernetes_namespace.monitoring]
+  depends_on = [kubernetes_namespace.grafana]
 }
 
 resource "kubernetes_secret" "canary_basic_auth" {
   metadata {
     name      = "canary-basic-auth"
-    namespace = var.monitoring_namespace
+    namespace = var.grafana_namespace
   }
   data = {
     username = "loki"
@@ -22,7 +22,7 @@ resource "kubernetes_secret" "canary_basic_auth" {
   }
   type = "kubernetes.io/basic-auth"
 
-  depends_on = [kubernetes_namespace.monitoring]
+  depends_on = [kubernetes_namespace.grafana]
 }
 
 resource "helm_release" "loki" {
@@ -30,7 +30,7 @@ resource "helm_release" "loki" {
   repository = "https://grafana.github.io/helm-charts"
   chart      = "loki"
   version    = "6.39.0"
-  namespace  = var.monitoring_namespace
+  namespace  = var.grafana_namespace
 
   values = [
     templatefile("${path.module}/templates/loki/values.tftpl", {
@@ -41,7 +41,7 @@ resource "helm_release" "loki" {
   ]
 
   depends_on = [
-    kubernetes_namespace.monitoring,
+    kubernetes_namespace.grafana,
     kubernetes_secret.loki_basic_auth,
     kubernetes_secret.canary_basic_auth,
   ]

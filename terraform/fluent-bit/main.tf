@@ -1,3 +1,9 @@
+resource "kubernetes_namespace" "amazon_cloudwatch" {
+  metadata {
+    name = var.amazon_cloudwatch_namespace
+  }
+}
+
 resource "kubernetes_config_map" "fluent_bit_cluster_info" {
   metadata {
     name      = "fluent-bit-cluster-info"
@@ -5,12 +11,12 @@ resource "kubernetes_config_map" "fluent_bit_cluster_info" {
   }
 
   data = {
-    "cluster.name"  = var.cluster_name
-    "http.port"     = "2020"
-    "http.server"   = "On"
-    "read.head"     = "Off"
-    "read.tail"     = "On"
-    "logs.region"   = var.aws_region
+    "cluster.name" = var.cluster_name
+    "http.port"    = "2020"
+    "http.server"  = "On"
+    "read.head"    = "Off"
+    "read.tail"    = "On"
+    "logs.region"  = var.aws_region
   }
 }
 

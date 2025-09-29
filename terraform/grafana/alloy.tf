@@ -1,7 +1,7 @@
 resource "kubernetes_config_map" "alloy_config" {
   metadata {
     name      = "alloy-config"
-    namespace = var.monitoring_namespace
+    namespace = var.grafana_namespace
   }
 
   data = {
@@ -9,7 +9,7 @@ resource "kubernetes_config_map" "alloy_config" {
   }
 
   depends_on = [
-    kubernetes_namespace.monitoring
+    kubernetes_namespace.grafana
   ]
 }
 
@@ -18,14 +18,14 @@ resource "helm_release" "alloy" {
   repository = "https://grafana.github.io/helm-charts"
   chart      = "alloy"
   version    = "1.2.1"
-  namespace  = var.monitoring_namespace
+  namespace  = var.grafana_namespace
 
   values = [
     file("${path.module}/manifests/alloy/values.yaml")
   ]
 
   depends_on = [
-    kubernetes_namespace.monitoring,
+    kubernetes_namespace.grafana,
     kubernetes_config_map.alloy_config,
     helm_release.loki,
   ]
