@@ -13,7 +13,7 @@ eksctl create cluster -f cluster-config.yaml
 
 ### Terraform モジュールのデプロイ
 
-- `terraform/` 以下の `gcp` 以外のモジュールを `apply` する
+- `terraform/` 以下に Terraform モジュールがある
 - 各モジュール内に `terraform.tfvars` を作る
 - `variables.tf` の値を `terraform.tfvars` に記述する
 
