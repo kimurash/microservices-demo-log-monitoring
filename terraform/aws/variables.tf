@@ -5,7 +5,6 @@ variable "aws_region" {
 
 variable "aws_profile" {
   type    = string
-  default = "3shake"
 }
 
 variable "cluster_name" {
@@ -15,10 +14,10 @@ variable "cluster_name" {
 
 variable "loki_chunks_bucket_name" {
   type    = string
-  default = "3shake-loki-chunks"
+  default = "my-loki-chunks"
 }
 
 variable "loki_ruler_bucket_name" {
   type    = string
-  default = "3shake-loki-ruler"
+  default = "my-loki-ruler"
 }
