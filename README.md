@@ -28,7 +28,7 @@ terraform apply
 
 ```bash
 cd terraform/<module_name>
-tf destroy
+terraform destroy
 ```
 
 ### EKS クラスターの破壊
