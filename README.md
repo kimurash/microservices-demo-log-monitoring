@@ -1,6 +1,6 @@
-# microservice-demo
+# microservices-log-monitoring-demo
 
-これは [microservice-demo](https://github.com/GoogleCloudPlatform/microservices-demo) を改造したリポジトリです。
+これは [microservices-demo](https://github.com/GoogleCloudPlatform/microservices-demo) を改造したリポジトリです。
 
 ## 環境構築
 
