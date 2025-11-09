@@ -1,6 +1,8 @@
-# microservices-log-monitoring-demo
+# microservices-demo-log-monitoring
 
-これは [microservices-demo](https://github.com/GoogleCloudPlatform/microservices-demo) を改造したリポジトリです。
+[microservices-demo](https://github.com/GoogleCloudPlatform/microservices-demo) のログを Grafana Loki と Amazon CloudWatch Logs に送信するリポジトリです。
+
+![log-monitoring-architecture](./docs/img/log-monitoring-architecture.png)
 
 ## 環境構築
 
